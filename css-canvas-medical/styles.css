@@ -1,0 +1,209 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+}
+
+.column-full {
+  flex: 100%;
+}
+
+.column-half {
+  flex: 50%;
+}
+
+.column-60 {
+  flex: 60%;
+}
+
+.column-40 {
+  flex: 40%;
+}
+
+.inline-block {
+  display: block;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.justify-right {
+  justify-content: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.align-items {
+  align-items: center;
+}
+
+.bot-border {
+  border-bottom: 1px solid rgb(245 245 246);
+}
+
+.font-avenir {
+  font-family: Avenir, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.font-tiempos-norm {
+  font-family: "Tiempos Headline", serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(199 199 199);
+}
+
+.pl-50 {
+  padding-left: 50px;
+}
+
+.pr-50 {
+  padding-right: 50px;
+}
+
+.pb-40 {
+  padding-bottom: 40px;
+}
+
+.pt-20 {
+  padding-top: 20px;
+}
+
+.header-img {
+  padding: 20px 20px 20px 0;
+  width: 180px;
+}
+
+.button-style {
+  color: white;
+  background-color: rgb(41 68 100);
+  border: none;
+  border-radius: 3px;
+}
+
+.button-header {
+  height: 35px;
+  width: 90px;
+}
+
+.button-body {
+  width: 135px;
+  height: 40px;
+}
+
+.bg-grey {
+  background-color: rgb(250 250 250);
+}
+
+.lh-2 {
+  line-height: 2;
+}
+
+.text-dgrey {
+  color: rgb(125 125 125);
+}
+
+.lh-1 {
+  line-height: 1;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.font-size {
+  font-size: 12px;
+}
+
+.a-footer {
+  color: rgb(135 135 135);
+}
+
+.padding-footer {
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
+.hero-image {
+  background-image: url("images/hero.jpg");
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  height: 525px;
+  margin: 50px;
+}
+
+.text-white {
+  color: white;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.overlay {
+  background: rgb(68 70 68 / 40%);
+}
+
+.height {
+  height: 525px;
+}
+
+.hero-div {
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
+  padding: 50px;
+}
+
+.width-full {
+  width: 100%;
+}
+
+.background-dgrey {
+  background-color: rgb(81 83 81);
+}
+
+div.block > a {
+  display: block;
+  color: white;
+}
+
+.address-img {
+  height: 30px;
+  width: 160px;
+}
+
+.height-350 {
+  height: 350px;
+}
+
+.padding-learn {
+  padding-bottom: 15px;
+}
