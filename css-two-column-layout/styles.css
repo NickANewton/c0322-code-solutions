@@ -1,0 +1,102 @@
+p {
+  color: rgb(100 100 100);
+}
+
+button {
+  color: rgb(210 81 73);
+  border: 2px solid rgb(210 81 73);
+  background-color: white;
+  width: 160px;
+  height: 35px;
+  margin-top: 25px;
+  font-size: 15px;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.column-half {
+  flex-basis: 50%;
+}
+
+.column-third {
+  flex-basis: calc(100% / 3);
+}
+
+.column-two-thirds {
+  flex-basis: calc(200% / 3);
+}
+
+.display {
+  display: flex;
+}
+
+.width-full {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.font-normal {
+  font-family: Karla, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.font-large {
+  font-family: Karla, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.font-grey {
+  color: rgb(100 100 100);
+}
+
+.margin-top {
+  margin-top: 20px;
+}
+
+.letter-spacing {
+  letter-spacing: 0.5px;
+}
+
+.line-height {
+  line-height: 2;
+}
+
+.font-size {
+  font-size: 60px;
+}
+
+.margin-bot-zero {
+  margin-bottom: 0;
+}
+
+.margin-top-zero {
+  margin-top: 0;
+}
+
+.padding-right {
+  padding-right: 126px;
+}
+
+.margin-bot-30 {
+  margin-bottom: 30px;
+}
