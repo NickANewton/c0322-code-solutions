@@ -19,8 +19,8 @@ var vehicle = {
   year: 2018
 };
 
-vehicle.color = ['red'];
-vehicle.isConvertible = [false];
+vehicle['color'] = 'red';
+vehicle['isConvertible'] = false;
 
 console.log('value of color:', vehicle.color);
 console.log('value of isConvertible:', vehicle.isConvertible);
