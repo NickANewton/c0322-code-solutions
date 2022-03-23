@@ -41,6 +41,11 @@ p {
   font-weight: 400;
 }
 
+.lv-image {
+  width: 250px;
+  object-fit: cover;
+}
+
 .price p:nth-of-type(1) {
   background-color: rgb(254 242 231);
   border-radius: 5px;
