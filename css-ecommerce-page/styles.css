@@ -31,10 +31,6 @@ p {
   text-align: center;
 }
 
-.display-flex {
-  display: flex;
-}
-
 .font {
   font-family: "DM Sans", sans-serif;
   font-style: normal;
@@ -46,23 +42,23 @@ p {
   object-fit: cover;
 }
 
-.price p:nth-of-type(1) {
+.price span:nth-of-type(1) {
   background-color: rgb(254 242 231);
   border-radius: 5px;
   padding: 2px;
   margin-right: 1px;
 }
 
-.price p:nth-of-type(2) {
+.price span:nth-of-type(2) {
   text-decoration: line-through;
 }
 
-.name-size p:nth-of-type(1) {
+.name-size span:nth-of-type(1) {
   border-right: 1px solid rgb(211 211 211);
   padding-right: 5px;
 }
 
-.column-fifth p:nth-of-type(2) {
+.column-fifth span:nth-of-type(2) {
   color: rgb(211 211 211);
 }
 
