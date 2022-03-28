@@ -25,8 +25,7 @@ function capitalizeWord(word) {
   var firstLetter = word.charAt(0);
   var restOfWord = word.slice(1, word.length);
   if (word.toLowerCase() === 'javascript') {
-    restOfWord = restOfWord.toLowerCase();
-    return firstLetter.toUpperCase() + restOfWord.replace('s', 'S');
+    return 'JavaScript';
   } else {
     return firstLetter.toUpperCase() + restOfWord.toLowerCase();
   }

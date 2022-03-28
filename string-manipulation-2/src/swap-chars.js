@@ -11,9 +11,15 @@
 
 */
 function swapChars(firstIndex, secondIndex, string) {
-  var toArray = string.split('');
-  var change = toArray[firstIndex];
-  toArray[firstIndex] = toArray[secondIndex];
-  toArray[secondIndex] = change;
-  return toArray.join('').toString();
+  var newString = '';
+  for (var i = 0; i < string.length; i++) {
+    if (i === firstIndex) {
+      newString += string[secondIndex];
+    } else if (i === secondIndex) {
+      newString += string[firstIndex];
+    } else {
+      newString += string[i];
+    }
+  }
+  return newString;
 }
