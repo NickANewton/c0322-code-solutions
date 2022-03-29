@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  margin: auto;
+}
+
+.circle {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  margin: 200px auto;
+  box-shadow: 0 0 20px rgb(250 234 132);
+  background-color: rgb(250 234 132);
+}
+
+.off-yellow {
+  background-color: rgb(254 249 241);
+}
+
+.black {
+  background-color: rgb(17 17 17);
+}
+
+.alignment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gray {
+  background-color: rgb(37 37 37);
+  box-shadow: none;
+}
