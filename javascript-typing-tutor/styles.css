@@ -1,0 +1,25 @@
+.container {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  font-family: "Courier Prime", monospace;
+  font-weight: 700;
+  font-size: 50px;
+}
+
+.green {
+  color: rgb(31 206 33);
+}
+
+.red {
+  color: rgb(248 14 6);
+  border-bottom: 5px solid rgb(248 14 6);
+}
+
+.underline {
+  border-bottom: 5px solid black;
+}
