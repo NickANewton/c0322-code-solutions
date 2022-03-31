@@ -1,14 +1,18 @@
 var $span = document.querySelectorAll('span');
-var $firstSpan = document.querySelector('span');
-var grump = 'grumpy wizards make toxic brew';
+var $body = document.querySelector('body');
+var grumpy = '';
 
 function handleKeyDownEvent(event) {
-
+  grumpy += event.key;
   for (var i = 0; i < $span.length; i++) {
-    if ($span[i] === grump[i]) {
+    if (grumpy[i] === $span[i].textContent) {
       $span[i].className = 'green';
+    } else if (grumpy[i] !== $span[i].textContent) {
+      $span[i].className = 'red';
+    } else {
+      $span.className = 'underline';
     }
   }
 }
 
-$firstSpan.addEventListener('keydown', handleKeyDownEvent);
+$body.addEventListener('keydown', handleKeyDownEvent);
