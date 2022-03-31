@@ -1,17 +1,16 @@
 var $span = document.querySelectorAll('span');
 var $body = document.querySelector('body');
-var grumpy = '';
+var count = -1;
 
 function handleKeyDownEvent(event) {
-  grumpy += event.key;
-  for (var i = 0; i < $span.length; i++) {
-    if (grumpy[i] === $span[i].textContent) {
-      $span[i].className = 'green';
-    } else if (grumpy[i] !== $span[i].textContent) {
-      $span[i].className = 'red';
-    } else {
-      $span.className = 'underline';
-    }
+  count++;
+  if (event.key === $span[count].textContent) {
+    $span[count].className = 'green';
+  } else if (event.key[count] !== $span[count].textContent) {
+    $span[count].className = 'red';
+    count--;
+  } else {
+    $span.className = 'underline';
   }
 }
 
