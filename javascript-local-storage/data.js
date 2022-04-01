@@ -3,7 +3,7 @@
 var todos = [];
 var previousTodosJSON = localStorage.getItem('javascript-local-storage');
 
-if (previousTodosJSON !== null) {
+if (previousTodosJSON !== []) {
   todos = JSON.parse(previousTodosJSON);
 }
 
