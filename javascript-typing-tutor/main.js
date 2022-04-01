@@ -4,6 +4,9 @@ var count = -1;
 
 function handleKeyDownEvent(event) {
   count++;
+  if (count > $span.length - 1) {
+    return;
+  }
   var underline = $span[count + 1];
 
   if (event.key === $span[count].textContent) {
