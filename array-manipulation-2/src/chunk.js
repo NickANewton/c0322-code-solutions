@@ -4,29 +4,38 @@
   remaining elements are gathered into a final sub-array.
 - this function will have two parameters (array, size)
 - ex input chunk(['foo', 'bar', 'baz', 'qux'], 2); ouput // -> [["foo", "bar"], ["baz", "qux"]]
-- create two arrays
-  one to hold each sub array and push each sub array into:
-- the final array holding all sub arrays.
-- cycle through the input array splitting the array up in chunks defined by the size input
-- cycle through the array starting at where the last loop left off and the remainder of the input to the final array
-- return the final array
+- create an empty array to hold the final array output
+- use the array slice method to
 */
 
 function chunk(array, size) {
   var finalArray = [];
   var subArray = [];
+
   if (array === []) {
     return [];
   }
 
-  for (var sub = 0; sub < size - 1; sub++) {
-    subArray.push(array[sub]);
+  if (size === 1) {
+    for (var i = 0; i < array.length; i++) {
+      subArray.push(array[i]);
+      finalArray.push(subArray);
+      subArray.shift();
+    }
+    return finalArray;
+  }
+  /*
+  for (var start = 0; start < size; start++) {
+    subArray.push(array[start]);
   }
   finalArray.push(subArray);
 
-  for (var final = size; final < array.length; final++) {
-    subArray.push(array[final]);
-  }
-  finalArray.push(subArray);
+  if (size > Math.floor((array.length - 1) / 2)) {
+    for (var end = size; end < array.length; end++) {
+      subArray.push(array[end]);
+    }
+    finalArray.push(subArray);
+
+  } */
   return finalArray;
 }
