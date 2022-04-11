@@ -12,21 +12,51 @@
 - return the final array
 */
 
-function chunk(array, size) {
+/* function chunk(array, size) {
   var finalArray = [];
   var subArray = [];
   if (array === []) {
     return [];
-  }
+  } else {
 
-  for (var sub = 0; sub < size - 1; sub++) {
-    subArray.push(array[sub]);
-  }
-  finalArray.push(subArray);
+    for (var sub = 0; sub < size - 1; sub++) {
+      subArray.push(array[sub]);
+    }
+    finalArray.push(subArray);
 
-  for (var final = size; final < array.length; final++) {
-    subArray.push(array[final]);
+    for (var final = size; final < array.length; final++) {
+      subArray.push(array[final]);
+    }
+    finalArray.push(subArray);
+    return finalArray;
   }
-  finalArray.push(subArray);
-  return finalArray;
+} */
+
+/* function chunk(array, size) {
+  var arrayOfArrays = [];
+  if (array === []) {
+    return [];
+  } if (size === 1) {
+    for (var i = 0; i < array.length; i++) {
+      arrayOfArrays.push(array.slice(i, (i + 1)));
+    } return arrayOfArrays;
+  } else {
+    arrayOfArrays.push(array.slice(0, (size)));
+    if (size < (array.length / 2)) {
+      arrayOfArrays.push(array.slice(size, (size + size)));
+      arrayOfArrays.push(array.slice((size + size, (array.length - 1))));
+    } else {
+      arrayOfArrays.push(array.slice(size, array.length));
+    }
+    return arrayOfArrays;
+  }
+} */
+
+function chunk(array, size) {
+  var arrayOfArrays = [];
+  for (var i = 0; i < array.length; i += size) {
+    var chunkOfArray = array.slice(i, i + size);
+    arrayOfArrays.push(chunkOfArray);
+  }
+  return arrayOfArrays;
 }
