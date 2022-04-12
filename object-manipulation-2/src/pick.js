@@ -5,25 +5,17 @@
   - this function will have two parameters (source, keys)
   - ex input ick({ foo: 1, bar: 2, baz: 3 }, ['foo', 'baz']) output { foo: 1, baz: 3 }
   - create an object literal
-  - pinpoint each key within in input the object (dot notation)
-    AND compare it to the input keys (dot notation)
-    IF they match, add it to the final object
+  - cycle through the object source
+    IF the array keys includes a property in source and that propetry does not equal to undefined, add it to the final object
     IF a key does not match do NOT add it to the final object
    - return the final object */
 
 function pick(source, keys) {
   var finalObject = {};
-  for (var i = 0; i < keys.length; i++) {
-    for (var prop in source) {
-      if (keys[i] === prop) {
-        finalObject[prop] = source[prop];
-      }
+  for (var prop in source) {
+    if (keys.includes(prop) && source[prop] !== undefined) {
+      finalObject[prop] = source[prop];
     }
-    /* for (var pop in source) {
-      if (keys[i] !== pop) {
-        return {};
-      }
-    } */
   }
   return finalObject;
 }
