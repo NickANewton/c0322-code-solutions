@@ -1,5 +1,5 @@
 var $h1CountDown = document.querySelector('.countdown-display');
-var intervalID = setInterval(countdown, [1000]);
+var intervalID = setInterval(countdown, 1000);
 var count = 4;
 
 function countdown() {
