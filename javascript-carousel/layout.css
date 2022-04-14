@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 575px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+}
+
+.col-full {
+  width: 100%;
+}
