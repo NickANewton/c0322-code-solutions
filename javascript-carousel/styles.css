@@ -21,3 +21,15 @@
 .justify-center {
   justify-content: center;
 }
+
+.background-color {
+  background-color: rgb(117 167 99);
+}
+
+.carousel {
+  padding: 15px;
+}
+
+i {
+  margin: 7px;
+}

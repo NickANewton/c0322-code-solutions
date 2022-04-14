@@ -1,8 +1,11 @@
 
-var $imgNodeList = document.querySelectorAll('img');
+var $imgNodeList = document.querySelectorAll('img[data-img-id]');
 var $iconDotsDiv = document.querySelector('#dots');
 var $imagesDiv = document.querySelector('#images');
 var $body = document.querySelector('body');
+var $dotIconNodeList = document.querySelectorAll('i[data-img-id]');
+var $rightArrow = document.querySelector('#right');
+var $leftArrow = document.querySelector('#left');
 
 var intervalID;
 function startCarousel() {
@@ -15,10 +18,32 @@ var timingCount = 0;
 function carousel() {
   if (timingCount < 4) {
     timingCount++;
-    viewSwapForward(timingCount);
+    viewSwap(timingCount);
   } else {
     timingCount = 0;
-    viewSwapForward(timingCount);
+    viewSwap(timingCount);
+  }
+}
+
+function viewSwap(iconId) {
+  for (var i = 0; i < $imgNodeList.length; i++) {
+    if (iconId === Number($imgNodeList[i].getAttribute('data-img-id'))) {
+      $imgNodeList[i].classList.remove('hidden');
+      $dotIconNodeList[i].className = 'fas fa-circle';
+    } else {
+      $imgNodeList[i].classList.add('hidden');
+      $dotIconNodeList[i].className = 'far fa-circle';
+    }
+  }
+}
+
+function imageBackwards() {
+  if (timingCount > 0) {
+    timingCount--;
+    viewSwap(timingCount);
+  } else {
+    timingCount = 4;
+    viewSwap(timingCount);
   }
 }
 
@@ -29,35 +54,17 @@ function handleCircleClickEvent(event) {
   $iconDataImgId = Number($iconDataImgId);
   if (event.target.matches('i')) {
     timingCount = $iconDataImgId;
-    viewSwapForward($iconDataImgId);
+    viewSwap($iconDataImgId);
   }
 }
-
-function viewSwapForward(iconId) {
-  for (var i = 0; i < $imgNodeList.length; i++) {
-    if (iconId === Number($imgNodeList[i].getAttribute('data-img-id'))) {
-      $imgNodeList[i].classList.remove('hidden');
-    } else {
-      $imgNodeList[i].classList.add('hidden');
-    }
-  }
-}
-
-/* function viewSwapBackwards(iconId) {
-  for (var i = 4; i < $imgNodeList.length; i--) {
-    if (iconId === Number($imgNodeList[i].getAttribute('data-img-id'))) {
-      $imgNodeList[i].classList.remove('hidden');
-    } else {
-      $imgNodeList[i].classList.add('hidden');
-    }
-  }
-} */
 
 $imagesDiv.addEventListener('click', handleArrowClickEvent);
 
 function handleArrowClickEvent(event) {
-  if (event.target.matches('i')) {
+  if (event.target === $rightArrow) {
     carousel();
+  } else if (event.target === $leftArrow) {
+    imageBackwards();
   }
 }
 
