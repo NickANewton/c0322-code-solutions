@@ -17,7 +17,7 @@ The "zipped" result is only as long as the shorter of first and second.
     empty the pair array
     loop over first and push values of first and second into pair array
     push the pair array into the final array
-return final array
+- return final array
 */
 
 function zip(first, second) {
