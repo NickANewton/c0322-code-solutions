@@ -6,17 +6,17 @@
 - ex input takeRight(['foo', 'bar', 'baz', 'qux'], 2); ouput ["baz", "qux"]
 - create an empty array to hosue the last elemetns of the array
 - IF the count is larger than the input array length, return the original array
-- cycle through the array starting at the input count
-  -push the last element in the order that they they were entered
+- cycle through the array starting at position - the count
+  -push the each index into the new array
 - return the new array to the function */
 
 function takeRight(array, count) {
-  var lastElements = [];
+  var finalArray = [];
   if (count >= array.length) {
     return array;
   }
-  for (var i = count; i < array.length; i++) {
-    lastElements.push(array[i]);
+  for (var e = array.length - count; e < array.length; e++) {
+    finalArray.push(array[e]);
   }
-  return lastElements;
+  return finalArray;
 }
