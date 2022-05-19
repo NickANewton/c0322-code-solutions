@@ -1,0 +1,14 @@
+.div-size {
+  height: 100px;
+  width: 150px;
+  border-radius: 50px;
+}
+
+.switch {
+  height: 98px;
+  width: 98px;
+}
+
+.full-page {
+  height: 100vh;
+}
