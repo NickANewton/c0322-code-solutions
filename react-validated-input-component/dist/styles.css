@@ -1,0 +1,40 @@
+body {
+  padding: 12px;
+  font-family: sans-serif;
+}
+
+.color-red {
+  color: red;
+}
+
+.color-green {
+  color: rgb(107 168 79);
+}
+
+.display-block {
+  display: block;
+}
+
+.font-size {
+  font-size: 0.75rem;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.ml-half {
+  margin-left: 0.5rem;
+}
+
+.mt-half {
+  margin-top: 0.5rem;
+}
+
+.padding-pt-1 {
+  padding: 0.1rem;
+}
