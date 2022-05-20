@@ -1,0 +1,47 @@
+body {
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.drawer {
+  height: 100vh;
+  width: 300px;
+  border-right: 1px solid black;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+}
+
+.li-styles {
+  list-style-type: none;
+}
+
+.shade {
+  width: 100%;
+  background-color: rgb(128 128 128/75%);
+}
+
+.full {
+  width: 100vw;
+  height: 100vh;
+}
+
+.icon-margin {
+  margin: 10px;
+}
+
+.display-flex {
+  display: flex;
+}
