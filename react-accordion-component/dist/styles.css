@@ -1,0 +1,25 @@
+body {
+  font-family: sans-serif;
+}
+
+.li-styles-none {
+  list-style-type: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.header {
+  border: 2px solid black;
+  width: 500px;
+  padding: 5px;
+}
+
+h1:hover {
+  cursor: pointer;
+}
+
+p:hover {
+  cursor: default;
+}
