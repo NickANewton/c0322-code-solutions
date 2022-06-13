@@ -1,0 +1,247 @@
+
+When the user follows the link to the app, an http request is sent from the client to the server
+to get the HTML document (which also loads any css files). React utilizes the #root div to eventually
+render all of the content content complied by wepack.
+  Within app.jsx
+   - The class App
+        - initializes the state object with 3 properties
+        - user: null (we do not know the user yet)
+        - isAuthorizing: true (potentially, the user could be signed-in already, but we do not know that yet)
+        - route: parseRoute() function is called (imported from parse-route module)
+                 essentially it takes the string URL and slices it up to determine which path the user is on
+                 which is currently sign-in
+
+     - The render method is called with a return value of null because we do not yet know
+     what page we need to render, thus calling the
+        componentDidMount method:
+          - listens for a hash change event and calls the setState method to update
+            the state with the current route, since the route is still the same (sign-in), nothing changes
+          - checks to see if there is a token in local storage
+              - since there isnt (because the user isnt currently logged in) setState is called and user remains to be null, and isAuthorizing is set to false
+
+     - Since state has now been updated, the render function is called again
+        - This time, isAuthorizing is false, so the components are rendered to the page
+          - The AppContext.Provider component sets a context value for other components to use without having to pass props
+            - the user, route, handleSignIn method, and handleSignOut method
+          - the NavBar component is rendered First
+            - imported from the navbar module, the class Navbar renders the navigation bar
+              with proper styling.
+              -- it also deconstructs the user, and handleSignOut method from the context mentioned earlier
+                 for use if the user is signed in.
+          - the PageContainer component is then rendered which essentially sets styling and a boundary for further children
+            - as the child of PageContainer, a JavaScript expression calls
+              the renderPage method of the class App object:
+                - it checks this.state.route to check to see which path the user is currently on and
+                    - since the user is currently on 'sign-in' the Auth component (imported from the auth module) is returned
+                      - Within the Auth module:
+                        - the class AuthPage calls the render function:
+                          - and deconstructs user, route,  and the handleSignIn method from the context
+                          - If there is a user detected, the redirect component will redirect the user to their profile homepage
+                          - if not, styling and text are rendered based on which path the user is on
+                          - the AuthFrom component is rendered imported from the auth-from module:
+                            - with it, the class AuthForm sets its state with 2 properties:
+                              - username: an empty string since we dont know the user yet
+                              - password: an empty string since we don't know the users password yet
+                            the form is rendered with the proper styling for sign-in
+     - now that the components have been mounted the class App calls the componentDidMount method
+        componentDidMount:
+          - listens for a hash change event and calls the setState method to update
+            the state with the current route, since the route is still the same (sign-in), nothing changes
+          - checks to see if there is a token in local storage
+              - since there isnt (because the user isnt currently logged in) setState is called and user remains to be null, and isAuthorizing is still false
+
+      - when the user clicks the 'Register now' anchor:
+        - the href changes the URL to #sign-up triggering the 'hashchange' listener of the window object
+          - which then changes the state route property of the class App to 'sign-up'
+          - because the state has changed, the render method is called:
+              - isAuthorizing is still false, so the components are rendered to the page
+          - The AppContext.Provider component sets a context value for other components to use without having to utilize props
+            - the user, route, handleSignIn method, and handleSignOut method
+          - the NavBar component is rendered First
+            - imported from the navbar module, the class Navbar renders the navigation bar
+              with proper styling.
+              -- it also deconstructs the user, and handleSignOut method from the context mentioned earlier
+                 for use if the user is signed in.
+          - the PageContainer component is then rendered
+            - as the child of PageContainer, a JavaScript expression calls
+              the renderPage method of the class App object:
+                - it checks this.state.route to check to see which path the user is currently on and
+                    - since the user is currently on 'sign-up' the Auth component (imported from the auth module) is returned
+                      - Within the Auth module:
+                        - the class AuthPage calls the render function:
+                          - and deconstructs user, route,  and the handleSignIn method from the context
+                          - If there is a user detected, the redirect component will redirect the user to their profile homepage
+                          - if not, styling and text are rendered based on which path the user is on, which is sign-up
+                          - the AuthFrom component is being passed 3 props, key action and onSignIn and is rendered and imported from the auth-from module:
+                            - with it, the class AuthForm sets its state with 2 properties:
+                              - username: an empty string since we dont know the user yet
+                              - password: an empty string since we don't know the users password yet
+                            the form is rendered with the proper styling for sign-up
+                            - When the user enters a username or password into the input fields
+                              the handleChange method is called
+                              which updates the state with the event.target name and input value.
+                              each character entered triggers a rerender of the form
+                            - when the user hits submit, the handle submit method is called:
+                              - the action property (the current route) is destructured from the props property of the this object
+                              - uses fetch to send a POST request to the server via the /api/auth/sign-up route
+                                - argon2 creates a hashed password and the hashed password and username are inserted
+                                  into the database.
+                                - if there are no errors the server responds to the client with a 201 status and returns:
+                                  - the userId, username, and time createdAt
+                                - the then method of the return previous fetch method is called which parses the response body text as json
+                                - once the body is parsed, if the action was signing up, the hash property of the location property
+                                  of the window object is updated to 'sign-in'
+
+            which triggers the hashchange event listener on the window object.
+            - the state route property is updated to 'sign-in'
+
+             - because the state has changed, the render method is called:
+              - isAuthorizing is still false, so the components are rendered to the page
+          - The AppContext.Provider component sets a context value for other components to use without having to utilize props
+            - the user, route, handleSignIn method, and handleSignOut method
+          - the NavBar component is rendered First
+            - imported from the navbar module, the class Navbar renders the navigation bar
+              with proper styling.
+              -- it also deconstructs the user, and handleSignOut method from the context mentioned earlier
+                 for use if the user is signed in.
+          - the PageContainer component is then rendered
+            - as the child of PageContainer, a JavaScript expression calls
+              the renderPage method of the class App object:
+                - it checks this.state.route to check to see which path the user is currently on and
+                    - since the user is currently on 'sign-ip' the Auth component (imported from the auth module) is returned
+                      - Within the Auth module:
+                        - the class AuthPage calls the render function:
+                          - and deconstructs user, route,  and the handleSignIn method from the context
+                          - If there is a user detected, the redirect component will redirect the user to their profile homepage
+                          - if not, styling and text are rendered based on which path the user is on, which is sign-ip
+                          - the AuthFrom component is being passed 3 props, key action and onSignIn and is rendered and imported from the auth-from module:
+                            - with it, the class AuthForm sets its state with 2 properties:
+                              - username: an empty string since we dont know the user yet
+                              - password: an empty string since we don't know the users password yet
+                            the form is rendered with the proper styling for sign-ip
+                            - When the user enters a username or password into the input fields
+                              the handleChange method is called
+                              which updates the state with the event.target name and input value.
+                              each character entered triggers a rerender of the form
+                            - when the user hits submit, the handle submit method is called:
+                              - the action property (the current route) is destructured from the props property of the this object
+                              - uses fetch to send a POST request to the server via the /api/auth/sign-in route
+                              - the database is queried to select the userId and hashedpassword, where the username
+                                matches the one submitted by the user
+                                if true,
+                              - the verify method of the argon2 object is called with the hashedPassword, and the user entered password
+                                and does some magic to check to see when the entered password gets hashed, if it matches the stored hashedPassword
+                                if so, the response is sent with the userId and username
+                                  as well as a a json web token:
+                                    the sign method of the jwt object is called to create a token out of the userId, username and the token secrect from .env
+                                - the then method of the return previous fetch method is called which parses the response body text as json
+                                - once the body is parsed, if the response includes a user and token property
+                                  the onSignIn method of the props property of the this object is called with the response
+
+                                - the onSignIn method was passed as a prop to AuthFrom from this.context which contains the handleSignIn method from
+                                  the class App in app.jsx
+                                - the handleSignIn prototype method destructures the user and token properties from the result object it was passed as an argument
+                                  and sets the token to the browers local storage
+                                - the setState method of the this object is called and the user property is updated to contain the username and userId of the user that signed in
+
+            - since the state has been updated, it triggers a rendering of the class App.
+            - isAuthorizing is still false, so the components are rendered to the page
+          - The AppContext.Provider component sets a context value for other components to use without having to utilize props
+            - the user, route, handleSignIn method, and handleSignOut method
+          - the NavBar component is rendered First
+            - imported from the navbar module, the class Navbar renders the navigation bar
+              with proper styling.
+              -- it also deconstructs the user, and handleSignOut method from the context mentioned earlier
+                 for use if the user is signed in.
+          - the PageContainer component is then rendered
+            - as the child of PageContainer, a JavaScript expression calls
+              the renderPage method of the class App object:
+                - it checks this.state.route to check to see which path the user is currently on and
+                    - since the user is currently on 'sign-up' the Auth component (imported from the auth module) is returned
+                      - Within the Auth module:
+                        - the class AuthPage calls the render function:
+                          - and deconstructs user, route,  and the handleSignIn method from the context
+                          - the user prop of the context prop of the this object now has a value other than null and the redirect component will redirect the user to their profile homepage
+                  which triggers the hashchange event listener on the window object.
+            - the state route property is updated to ''
+            - the getItem method of the localStorage property of the window object is called to get the json web token
+            - if the token exists then the jwtDecode function is called with the token as an agument
+              which will decode the username and userId and verify that the signature (token secret) matches
+            - the setState method of the this object is called and the user prop is updated with the users info
+              and isAuthorizing is is still set to false.
+
+    - Since state has now been updated, render is called again
+        - isAuthorizing is false, so the components are rendered to the page
+          - The AppContext.Provider component sets a context value for other components to use without having to pass props
+            - the user, route, handleSignIn method, and handleSignOut method
+          - the NavBar component is rendered First
+            - imported from the navbar module, the class Navbar renders the navigation bar
+              with proper styling.
+              user now contains user information which renders a sign out button
+          - the PageContainer component is then rendered which essentially sets styling and a boundary for further children
+            - as the child of PageContainer, a JavaScript expression calls
+              the renderPage method of the class App object:
+                - it checks this.state.route to check to see which path the user is currently on and
+                since it is '' the home component is rendered
+                  - the class Home renders a troll gif
+        - componentDidMount is called again, but because nothing has changed the hashchange event listener listens for a hash change
+
+        if the user refreshes the page, the class App rerenders and isAuthorizing is set to true.
+        render returns null and and componentDidMount is called
+        the hash hasnt changed so set state isnt updated
+        the token is retrieved from local storage
+        jwtDecode function is called to verify the user
+        and the state is updated with the user and isAuthorizing is now false
+        render is called again and the renderPage method is eventually called
+        since the path is '' the homepage is rendered.
+
+
+         - when the user clicks the sign out button:
+            the handleSignOut method is called, which was destructured from the context property of the this object
+            - it calls the removeItem method of the localStorage property of the window object and removes the json web token
+            - the setState method of the this object is called and the user property is changed to null.
+            - since the state has been updated, the class App is rerendered.
+
+  - isAuthorizing is still false, so the components are rendered to the page
+          - The AppContext.Provider component sets a context value for other components to use without having to utilize props
+            - the user, route, handleSignIn method, and handleSignOut method
+          - the NavBar component is rendered First
+            - imported from the navbar module, the class Navbar renders the navigation bar
+              with proper styling.
+              -- it also deconstructs the user, and handleSignOut method from the context mentioned earlier
+                 for use if the user is signed in.
+          - the PageContainer component is then rendered
+            - as the child of PageContainer, a JavaScript expression calls
+              the renderPage method of the class App object:
+                - it checks this.state.route to check to see which path the user is currently on and
+                    - since the user is currently on '' the home component is returned
+                    within the class Home, if the user prop of the context prop of the this object is false,
+                    the Redirect Component is returned with the to prop with a value of sign-in
+                    which sets the url hash to sign-in
+
+           which triggers the hashchange event listener on the window object.
+            - the state route property is updated to 'sign-in'
+
+             - because the state has changed, the render method is called:
+              - isAuthorizing is still false, so the components are rendered to the page
+          - The AppContext.Provider component sets a context value for other components to use without having to utilize props
+            - the user, route, handleSignIn method, and handleSignOut method
+          - the NavBar component is rendered First
+            - imported from the navbar module, the class Navbar renders the navigation bar
+              with proper styling.
+          - the PageContainer component is then rendered
+            - as the child of PageContainer, a JavaScript expression calls
+              the renderPage method of the class App object:
+                - it checks this.state.route to check to see which path the user is currently on and
+                    - since the user is currently on 'sign-in' the Auth component (imported from the auth module) is returned
+                      - Within the Auth module:
+                        - the class AuthPage calls the render function:
+                          - and deconstructs user, route,  and the handleSignIn method from the context
+                          - If there is a user detected, the redirect component will redirect the user to their profile homepage
+                          - if not, styling and text are rendered based on which path the user is on, which is sign-ip
+                          - the AuthFrom component is being passed 3 props, key action and onSignIn and is rendered and imported from the auth-from module:
+                            - with it, the class AuthForm sets its state with 2 properties:
+                              - username: an empty string since we dont know the user yet
+                              - password: an empty string since we don't know the users password yet
+                            the form is rendered with the proper styling for sign-in
+           - componentDidMount is called again, but because nothing has changed the hashchange event listener listens for a hash change
