@@ -1,7 +1,7 @@
 /* exported insertUnderTop */
 
 function insertUnderTop(stack, value) {
-  if (stack.print() !== 'Stack { <empty> }') {
+  if (stack.peek() !== undefined) {
     const first = stack.pop();
     stack.push(value);
     stack.push(first);
