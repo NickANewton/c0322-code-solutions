@@ -1,12 +1,11 @@
 /* exported includes */
 
 function includes(list, value) {
-  let newList = list;
-  while (newList) {
-    newList = list.next;
-    if (newList.data === value) {
+  while (list) {
+    if (list.data === value) {
       return true;
     }
+    list = list.next;
   }
   return false;
 }

@@ -2,11 +2,12 @@
 
 function removeTail(list) {
   if (list.next === null) return list;
-  let newList = list;
-  let tail;
-  while (newList) {
-    tail = newList.data;
-    newList = newList.next;
+  var current = list;
+  var next = current.next;
+  while (next.next) {
+    current = next;
+    next = next.next;
   }
-  tail.data = null;
+  current.next = null;
+  return list;
 }

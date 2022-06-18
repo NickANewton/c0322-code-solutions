@@ -3,5 +3,9 @@
 function swapFront(list) {
   if (list.next === null) return list;
   const newList = list;
-  newList.data = newList.next.data;
+  const first = list.data;
+  const second = list.next.data;
+  newList.data = second;
+  newList.next.data = first;
+  return newList;
 }
