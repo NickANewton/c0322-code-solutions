@@ -108,7 +108,7 @@ class Carousel extends React.Component {
                 ? 'fas fa-circle'
                 : 'far fa-circle';
               return (
-              <i key={index} id={images.name} className={dotColor} onClick={this.circleClick}></i>
+              <i key={index} id={index} className={dotColor} onClick={this.circleClick}></i>
               );
             })
           }
