@@ -1,0 +1,30 @@
+.carousel {
+  height: 500px;
+  width: 700px;
+  border: 2px solid black;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+i {
+  margin: 0.125rem;
+}
+
+i,
+a {
+  color: black;
+}
