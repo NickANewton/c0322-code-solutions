@@ -1,28 +1,4 @@
 import React from 'react';
-
-const images = [
-  {
-    name: 'Pikachu',
-    imgUrl: '../images/025.png'
-  },
-  {
-    name: 'Bulbasaur',
-    imgUrl: '../images/001.png'
-  },
-  {
-    name: 'Squirtle',
-    imgUrl: '../images/007.png'
-  },
-  {
-    name: 'Charmander',
-    imgUrl: '../images/004.png'
-  },
-  {
-    name: 'Jigglypuff',
-    imgUrl: '../images/039.png'
-  }
-];
-
 class Carousel extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +14,7 @@ class Carousel extends React.Component {
   clickLeft() {
     if (this.state.count === 0) {
       this.setState({
-        count: 4
+        count: this.props.images.length - 1
       });
     } else {
       this.setState({
@@ -50,7 +26,7 @@ class Carousel extends React.Component {
   }
 
   clickRight() {
-    if (this.state.count === 4) {
+    if (this.state.count === this.props.images.length - 1) {
       this.setState({
         count: 0
       });
@@ -73,7 +49,7 @@ class Carousel extends React.Component {
 
   carouselInterval() {
     this.timerId = setInterval(() => {
-      if (this.state.count === 4) {
+      if (this.state.count === this.props.images.length - 1) {
         this.setState({
           count: 0
         });
@@ -96,14 +72,14 @@ class Carousel extends React.Component {
           <a href="#" onClick={this.clickLeft}>
             <i className="fas fa-chevron-left fa-3x"></i>
           </a>
-          <img src={`${images[this.state.count].imgUrl}`} alt="" />
+          <img src={`${this.props.images[this.state.count].imgUrl}`} alt="" />
           <a href="#" onClick={this.clickRight}>
             <i className="fas fa-chevron-right fa-3x margin-5"></i>
           </a>
         </div>
         <div className='display-flex justify-center align-center'>
           {
-            images.map((name, index) => {
+            this.props.images.map((name, index) => {
               const dotColor = this.state.count === index
                 ? 'fas fa-circle'
                 : 'far fa-circle';
